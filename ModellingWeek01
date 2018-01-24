@@ -1,0 +1,47 @@
+install.packages("readr")
+
+install.packages("modelr")
+
+install.packages("randomForest")
+
+install.packages("ggplot2")
+
+
+
+library(readr)
+
+library(modelr)
+
+library(randomForest)
+
+library(ggplot2)
+
+data(diamonds)
+
+diamonds %>% dim()
+diamonds %>% names()
+
+diamtrain <- diamonds %>% sample_frac(0.30)
+diamtest <- diamonds %>% sample_frac(0.10)
+
+diamtrain %>% dim()
+diamtest %>% dim()
+
+# Predictive Mode
+# Predictive Model
+# Predicting "pice" by all other variables
+# Use "randomForst"
+
+pricemodel <- lm(price ~ . , data=diamtrain)
+rmse(pricemodel,diamtrain)
+rmse(pricemodel,diamtest)
+
+mae(pricemodel,diamtrain)
+mae(pricemodel,diamtest)
+
+rsquare(pricemodel,diamtrain)
+rsquare(pricemodel,diamtest)
+
+qae(pricemodel,diamtrain)
+qae(pricemodel,diamtest)
+
